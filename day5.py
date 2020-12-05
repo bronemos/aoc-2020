@@ -3,25 +3,7 @@ import sys
 
 # pt1
 
-def calculate(characters: str, interval: tuple, lower: str, upper: str) -> int:
-    for idx, character in enumerate(characters):
-        if idx != len(characters) - 1:
-            if character == lower:
-                interval = (interval[0], interval[1] - (interval[1] - interval[0]) // 2 - 1)
-            else:
-                interval = (interval[0] + (interval[1] - interval[0]) // 2 + 1, interval[1])
-        else:
-            if character == lower:
-                return interval[0]
-            else:
-                return interval[1]
-
-
-def calculate_id(characters: str) -> int:
-    return calculate(characters[:7], (0, 127), 'F', 'B') * 8 + calculate(characters[7:], (0, 7), 'L', 'R')
-
-
-print(max(seats := [calculate_id(x.strip()) for x in sys.stdin.readlines()]))
+print(max(seats := [([interval := (0, 63) if i == 0 and character == 'F' else (64, 127) if i == 0 and character == 'B' else (interval[0], interval[1] - (interval[1] - interval[0]) // 2 - 1) if character == 'F' else (interval[0] + (interval[1] - interval[0]) // 2 + 1, interval[1]) for i, character in enumerate(row)][-1][0 if row[-1] == 'F' else 1] * 8 + [interval := (0, 3) if i == 0 and character == 'L' else (4, 7) if i == 0 and character == 'R' else (interval[0], interval[1] - (interval[1] - interval[0]) // 2 - 1) if character == 'L' else (interval[0] + (interval[1] - interval[0]) // 2 + 1, interval[1]) for i, character in enumerate(column)][-1][0 if column[-1] == 'L' else 1]) for row, column in [(y[:7], y[7:]) for y in [x.strip() for x in sys.stdin.readlines()]]]))
 
 # pt 2
 
