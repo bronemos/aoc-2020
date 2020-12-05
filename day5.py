@@ -1,5 +1,6 @@
 import sys
 
+
 # pt1
 
 def calculate(characters: str, interval: tuple, lower: str, upper: str) -> int:
@@ -19,8 +20,9 @@ def calculate(characters: str, interval: tuple, lower: str, upper: str) -> int:
 def calculate_id(characters: str) -> int:
     return calculate(characters[:7], (0, 127), 'F', 'B') * 8 + calculate(characters[7:], (0, 7), 'L', 'R')
 
+
 print(max(seats := [calculate_id(x.strip()) for x in sys.stdin.readlines()]))
 
-#pt 2
+# pt 2
 
 print((set(range(min(seats), max(seats))) - set(seats)).pop())
