@@ -1,9 +1,8 @@
 import sys
-import re
 
 # pt1
 
-# print(sum([len(set(group)) for group in ''.join([x.strip() if x != '\n' else x for x in sys.stdin.readlines()]).split('\n')]))
+print(sum([len(set(group)) for group in ''.join([x.strip() if x != '\n' else x for x in sys.stdin.readlines()]).split('\n')]))
 
 # pt2
 
