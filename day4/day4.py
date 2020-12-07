@@ -5,7 +5,7 @@ with open('input4.txt', 'r') as f:
 
     # pt1
 
-    print(len([z for z in [re.split(':|\\s', y) for y in [x.replace('\n', ' ') for x in ''.join(f.readlines()).split('\n'*2)]] if len({'byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid'} - set(z)) == 0]))
+    print(len([z for z in [re.split(':|\\s', y) for y in [x.replace('\n', ' ') for x in ''.join(f.readlines()).split('\n'*2)]] if {'byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid'} <= set(z)]))
     f.seek(0)
 
     # pt2

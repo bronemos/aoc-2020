@@ -11,7 +11,7 @@ with open('input7.txt', 'r') as f:
             for k in bags:
                 if bag in bags[k]:
                     new_eligible.add(k)
-        if len(new_eligible - eligible) == 0:
+        if new_eligible <= eligible:
             print(len(eligible))
             break
         else:
