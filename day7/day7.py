@@ -1,4 +1,5 @@
 with open('input7.txt', 'r') as f:
+
     # pt1
 
     bags = {k[:-5]: [' '.join(bag.split(' ')[1:3]) for bag in v[:-1].split(', ')] for k, v in
@@ -25,7 +26,7 @@ with open('input7.txt', 'r') as f:
         total = 1
         for bag in bags[bag_to_count]:
             if bag == 'no other bags':
-                return 1
+                return total
             else:
                 total += count_bags(bags, bag[2:]) * int(bag[0])
         return total
