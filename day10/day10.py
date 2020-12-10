@@ -1,5 +1,6 @@
-with open('input10.txt', 'r') as f:
+from collections import defaultdict
 
+with open('input10.txt', 'r') as f:
     # pt1
 
     joltages = sorted([int(x.strip()) for x in f.readlines()])
@@ -18,4 +19,11 @@ with open('input10.txt', 'r') as f:
 
     # pt2
 
+    combinations = defaultdict(lambda: 0)
 
+    combinations[0] = 1
+
+    for joltage in joltages[1:]:
+        combinations[joltage] = combinations[joltage - 1] + combinations[joltage - 2] + combinations[joltage - 3]
+
+    print(combinations[max(joltages)])
