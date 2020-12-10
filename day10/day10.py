@@ -9,8 +9,8 @@ with open('input10.txt', 'r') as f:
     one_difference = 0
     three_difference = 0
 
-    for i, joltage in enumerate(joltages[1:]):
-        if joltage - joltages[i] == 1:
+    for joltage1, joltage2 in zip(joltages, joltages[1:]):
+        if joltage2 - joltage1 == 1:
             one_difference += 1
         else:
             three_difference += 1
