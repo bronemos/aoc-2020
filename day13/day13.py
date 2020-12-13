@@ -1,5 +1,3 @@
-from math import prod
-
 with open('input13.txt', 'r') as f:
     time, bus_nums = int(f.readline()), [int(x) for x in f.readline().split(',') if x != 'x']
 
@@ -14,7 +12,9 @@ with open('input13.txt', 'r') as f:
     _, bus_nums = int(f.readline()), [(int(x), offset) for offset, x in enumerate(f.readline().split(',')) if
                                       x != 'x']
     res = 0
-    product = prod([x[0] for x in bus_nums])
+    product = 1
+    for num in [x[0] for x in bus_nums]:
+        product *= num
     for t, i in bus_nums:
         p = product // t
         res += -i * pow(p, -1, t) * p
