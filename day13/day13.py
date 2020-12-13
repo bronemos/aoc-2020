@@ -20,5 +20,5 @@ with open('input13.txt', 'r') as f:
 
     for t, i in bus_nums:
         p = product // t
-        res -= i * pow(p, -1, t) * p
-    print(res % product)
+        res += i * pow(p, -1, t) * p
+    print(-res % product)
