@@ -25,12 +25,11 @@ memory = {}
 for entry in entries:
     if match := mask_pattern.match(entry):
         mask = match[1]
-        first_mask = int(mask.replace('X', '0'), 2)
-        second_mask = int(mask.replace('X', '1'), 2)
+        int_mask = int(mask.replace('X', '0'), 2)
     elif match := value_pattern.match(entry):
         cart_prod = product(['0', '1'], repeat=mask.count('X'))
         for prod in cart_prod:
-            address = (int(match[1]) ^ first_mask) | first_mask
+            address = (int(match[1]) ^ int_mask) | int_mask
             address = '{:036b}'.format(address)
             mask_copy = mask
             for character in prod:
